@@ -1,9 +1,9 @@
 version: '3.1'
 services:
   stats-server:
-    build: ./ewm-stats-service/server
+    build: ./ewm-stats-service/server/
     image: ewm_stats_server_image
-    container_name: ewm_stats_server
+    container_name: stats-server
     ports:
       - "9090:9090"
     depends_on:
