@@ -45,12 +45,6 @@
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>ru.practicum.explore-with-me</groupId>-->
-        <!--            <artifactId>dto</artifactId>-->
-        <!--            <version>${project.version}</version>-->
-        <!--            <scope>compile</scope>-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -65,8 +59,8 @@
         </plugins>
     </build>
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
