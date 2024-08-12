@@ -64,17 +64,21 @@ public class EventMapper {
     }
 
     public static Event toEvent(@NonNull UpdateEventDto updateEventDto) {
-        return Event.builder()
+        Event.EventBuilder builder = Event.builder()
                 .annotation(updateEventDto.getAnnotation())
                 .description(updateEventDto.getDescription())
                 .eventDate(updateEventDto.getEventDate())
                 .paid(updateEventDto.getPaid())
                 .participantLimit(updateEventDto.getParticipantLimit())
                 .requestModeration(updateEventDto.getRequestModeration())
-                .title(updateEventDto.getTitle())
-                .category(new Category(updateEventDto.getCategory(), null))
-                .location(LocationMapper.toLocation(updateEventDto.getLocation()))
-                .build();
+                .title(updateEventDto.getTitle());
+        if (updateEventDto.getCategory() != null) {
+            builder.category(new Category(updateEventDto.getCategory(), null));
+        }
+        if (updateEventDto.getLocation() != null) {
+            builder.location(LocationMapper.toLocation(updateEventDto.getLocation()));
+        }
+        return builder.build();
     }
 
     public static Optional<EventState> parseEventState(String eventState) {
