@@ -1,5 +1,9 @@
 package ru.practicum.explorewithme.ewmmainservice.event.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.ValidationException;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +18,6 @@ import ru.practicum.explorewithme.ewmmainservice.event.model.SortParam;
 import ru.practicum.explorewithme.ewmmainservice.event.model.UserEventsParams;
 import ru.practicum.explorewithme.ewmmainservice.event.service.EventService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.ValidationException;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;

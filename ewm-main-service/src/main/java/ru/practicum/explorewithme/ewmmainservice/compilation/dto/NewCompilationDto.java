@@ -1,11 +1,11 @@
 package ru.practicum.explorewithme.ewmmainservice.compilation.dto;
 
 
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @Data

@@ -15,7 +15,7 @@ services:
       - SERVER_PORT=9090
 
   stats-db:
-    image: postgres:14-alpine
+    image: postgres:16-alpine
     container_name: stats_db
     ports:
       - "7777:5432"
@@ -43,7 +43,7 @@ services:
       - DB_USER=test
       - DB_PASSWORD=test
   ewm-db:
-    image: postgres:14-alpine
+    image: postgres:16-alpine
     container_name: ewm_db
     ports:
       - "7778:5432"

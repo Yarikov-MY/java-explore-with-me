@@ -1,10 +1,10 @@
 package ru.practicum.explorewithme.ewmmainservice.event.model;
 
+import jakarta.persistence.criteria.Predicate;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.jpa.domain.Specification;
 
-import javax.persistence.criteria.Predicate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

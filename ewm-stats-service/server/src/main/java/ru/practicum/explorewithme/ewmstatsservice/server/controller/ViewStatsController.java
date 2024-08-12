@@ -1,5 +1,6 @@
 package ru.practicum.explorewithme.ewmstatsservice.server.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,6 @@ import ru.practicum.explorewithme.ewmstatsservice.server.mapper.ViewStatsMapper;
 import ru.practicum.explorewithme.ewmstatsservice.server.model.ViewStats;
 import ru.practicum.explorewithme.ewmstatsservice.server.service.ViewStatsService;
 
-import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;

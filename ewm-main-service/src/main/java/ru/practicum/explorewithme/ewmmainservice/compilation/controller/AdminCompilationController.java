@@ -1,5 +1,7 @@
 package ru.practicum.explorewithme.ewmmainservice.compilation.controller;
 
+import jakarta.validation.Valid;
+import jakarta.validation.ValidationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -16,9 +18,6 @@ import ru.practicum.explorewithme.ewmmainservice.compilation.dto.NewCompilationD
 import ru.practicum.explorewithme.ewmmainservice.compilation.mapper.CompilationMapper;
 import ru.practicum.explorewithme.ewmmainservice.compilation.model.Compilation;
 import ru.practicum.explorewithme.ewmmainservice.compilation.service.CompilationService;
-
-import javax.validation.Valid;
-import javax.validation.ValidationException;
 
 @RestController
 @RequestMapping("/admin/compilations")

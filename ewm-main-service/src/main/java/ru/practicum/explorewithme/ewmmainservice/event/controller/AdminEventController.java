@@ -1,5 +1,7 @@
 package ru.practicum.explorewithme.ewmmainservice.event.controller;
 
+import jakarta.validation.Valid;
+import jakarta.validation.ValidationException;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +20,6 @@ import ru.practicum.explorewithme.ewmmainservice.event.model.EventState;
 import ru.practicum.explorewithme.ewmmainservice.event.model.StateAction;
 import ru.practicum.explorewithme.ewmmainservice.event.service.EventService;
 
-import javax.validation.Valid;
-import javax.validation.ValidationException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

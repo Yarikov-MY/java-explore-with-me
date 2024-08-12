@@ -1,5 +1,6 @@
 package ru.practicum.explorewithme.ewmmainservice.request.controller;
 
+import jakarta.validation.constraints.NotNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,6 @@ import ru.practicum.explorewithme.ewmmainservice.request.dto.RequestDto;
 import ru.practicum.explorewithme.ewmmainservice.request.mapper.RequestMapper;
 import ru.practicum.explorewithme.ewmmainservice.request.service.RequestService;
 
-import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.stream.Collectors;
 

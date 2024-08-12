@@ -1,5 +1,6 @@
 package ru.practicum.explorewithme.ewmmainservice.category.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,8 +15,6 @@ import ru.practicum.explorewithme.ewmmainservice.category.dto.CategoryDto;
 import ru.practicum.explorewithme.ewmmainservice.category.mapper.CategoryMapper;
 import ru.practicum.explorewithme.ewmmainservice.category.model.Category;
 import ru.practicum.explorewithme.ewmmainservice.category.service.CategoryService;
-
-import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/admin/categories")

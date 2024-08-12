@@ -16,7 +16,7 @@ import ru.practicum.explorewithme.ewmmainservice.user.mapper.UserMapper;
 import ru.practicum.explorewithme.ewmmainservice.user.model.User;
 import ru.practicum.explorewithme.ewmmainservice.user.service.UserService;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 

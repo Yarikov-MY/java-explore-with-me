@@ -1,5 +1,6 @@
 package ru.practicum.explorewithme.ewmmainservice.error;
 
+import jakarta.validation.ValidationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
@@ -18,7 +19,6 @@ import ru.practicum.explorewithme.ewmmainservice.request.exception.RequestNotFou
 import ru.practicum.explorewithme.ewmmainservice.user.exception.UserAlreadyExistsException;
 import ru.practicum.explorewithme.ewmmainservice.user.exception.UserNotFoundException;
 
-import javax.validation.ValidationException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

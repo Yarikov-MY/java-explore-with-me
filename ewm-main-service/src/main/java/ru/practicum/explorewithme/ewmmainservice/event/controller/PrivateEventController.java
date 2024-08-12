@@ -1,5 +1,9 @@
 package ru.practicum.explorewithme.ewmmainservice.event.controller;
 
+import jakarta.validation.Valid;
+import jakarta.validation.ValidationException;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -27,10 +31,6 @@ import ru.practicum.explorewithme.ewmmainservice.request.model.Request;
 import ru.practicum.explorewithme.ewmmainservice.request.model.RequestStatus;
 import ru.practicum.explorewithme.ewmmainservice.request.service.RequestService;
 
-import javax.validation.Valid;
-import javax.validation.ValidationException;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
