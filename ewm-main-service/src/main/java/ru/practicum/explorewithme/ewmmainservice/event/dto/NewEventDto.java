@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,6 +37,7 @@ public class NewEventDto {
     @NotNull
     private LocationDto location;
     private Boolean paid;
+    @Positive
     private Integer participantLimit;
     private Boolean requestModeration;
     @Size(min = 3, max = 120)
