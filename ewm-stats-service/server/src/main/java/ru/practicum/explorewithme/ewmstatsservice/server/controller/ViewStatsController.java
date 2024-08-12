@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 import ru.practicum.explorewithme.ewmstatsservice.dto.EndpointHitDto;
 import ru.practicum.explorewithme.ewmstatsservice.dto.ViewStatsDto;
 import ru.practicum.explorewithme.ewmstatsservice.server.mapper.EndpointHitMapper;
@@ -43,6 +44,9 @@ public class ViewStatsController {
             @RequestParam(required = false) List<String> uris,
             @RequestParam(defaultValue = "false") Boolean unique
     ) {
+        if (start.isAfter(end)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "end is before start!");
+        }
         List<ViewStats> viewStats = viewStatsService.getViewStats(start, end, uris, unique);
         return viewStats.stream().map(ViewStatsMapper::toViewStatsDto).collect(Collectors.toList());
     }
