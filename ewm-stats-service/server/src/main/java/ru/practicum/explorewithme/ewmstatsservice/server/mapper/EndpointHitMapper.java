@@ -6,6 +6,11 @@ import ru.practicum.explorewithme.ewmstatsservice.server.model.EndpointHit;
 
 public class EndpointHitMapper {
     public static EndpointHit toEndpointHit(@NonNull EndpointHitDto endpointHitDto) {
-        return new EndpointHit(null, endpointHitDto.getApp(), endpointHitDto.getUri(), endpointHitDto.getIp(), endpointHitDto.getTimestamp());
+        return EndpointHit.builder()
+                .app(endpointHitDto.getApp())
+                .uri(endpointHitDto.getUri())
+                .ip(endpointHitDto.getIp())
+                .timestamp(endpointHitDto.getTimestamp())
+                .build();
     }
 }

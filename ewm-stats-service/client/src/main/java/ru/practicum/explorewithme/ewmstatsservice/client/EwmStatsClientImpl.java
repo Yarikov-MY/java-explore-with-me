@@ -26,7 +26,7 @@ public class EwmStatsClientImpl implements EwmStatsClient {
     public EwmStatsClientImpl(String url, RestTemplateBuilder restTemplateBuilder) {
         restTemplate = restTemplateBuilder
                 .uriTemplateHandler(new DefaultUriBuilderFactory(url))
-                .requestFactory(HttpComponentsClientHttpRequestFactory::new)
+                .requestFactory(HttpComponentsClientHttpRequestFactory.class)
                 .build();
     }
 
