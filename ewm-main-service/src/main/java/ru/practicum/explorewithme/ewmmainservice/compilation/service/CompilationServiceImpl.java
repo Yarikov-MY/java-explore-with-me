@@ -24,13 +24,11 @@ public class CompilationServiceImpl implements CompilationService {
     }
 
     @Override
-    @Transactional
     public List<Compilation> getCompilations(Boolean pinned, Integer from, Integer size) {
         return compilationRepository.findByPinned(pinned, PageRequest.of(from / size, size)).getContent();
     }
 
     @Override
-    @Transactional
     public Compilation getCompilation(Integer compilationId) {
         return findCompilation(compilationId);
     }

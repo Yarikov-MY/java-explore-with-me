@@ -7,10 +7,16 @@ import ru.practicum.explorewithme.ewmmainservice.category.model.Category;
 
 public class CategoryMapper {
     public static CategoryDto toCategoryDto(@NonNull Category category) {
-        return new CategoryDto(category.getId(), category.getName());
+        return CategoryDto.builder()
+                .id(category.getId())
+                .name(category.getName())
+                .build();
+
     }
 
     public static Category toCategory(@NonNull CategoryDto categoryDto) {
-        return new Category(null, categoryDto.getName());
+        return Category.builder()
+                .name(categoryDto.getName())
+                .build();
     }
 }

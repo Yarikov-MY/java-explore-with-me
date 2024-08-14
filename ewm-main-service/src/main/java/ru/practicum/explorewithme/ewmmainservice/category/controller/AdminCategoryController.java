@@ -44,5 +44,4 @@ public class AdminCategoryController {
     public CategoryDto updateCategory(@PathVariable Integer catId, @RequestBody @Valid CategoryDto categoryDto) {
         return CategoryMapper.toCategoryDto(categoryService.updateCategory(catId, CategoryMapper.toCategory(categoryDto)));
     }
-
 }

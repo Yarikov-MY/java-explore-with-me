@@ -6,6 +6,10 @@ import ru.practicum.explorewithme.ewmstatsservice.server.model.ViewStats;
 
 public class ViewStatsMapper {
     public static ViewStatsDto toViewStatsDto(@NonNull ViewStats viewStats) {
-        return new ViewStatsDto(viewStats.getApp(), viewStats.getUri(), viewStats.getHits());
+        return ViewStatsDto.builder()
+                .app(viewStats.getApp())
+                .uri(viewStats.getUri())
+                .hits(viewStats.getHits())
+                .build();
     }
 }

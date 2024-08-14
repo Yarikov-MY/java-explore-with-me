@@ -47,13 +47,11 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    @Transactional
     public List<Event> getEventsByUserId(Integer userId, Integer from, Integer size) {
         return eventRepository.findAllByInitiatorId(userId, PageRequest.of(from / size, size)).getContent();
     }
 
     @Override
-    @Transactional
     public Event getUserEventById(Integer userId, Integer eventId) {
         return eventRepository.findEventByIdAndInitiatorId(eventId, userId).orElseThrow(() -> new EventNotFoundException(eventId, userId));
     }
@@ -99,7 +97,6 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    @Transactional
     public List<Event> getAllEvents(AdminEventsParams adminEventsParams) {
         Pageable pageable = PageRequest.of(adminEventsParams.getFrom() / adminEventsParams.getSize(), adminEventsParams.getSize());
         return eventRepository.findAll(adminEventsParams.getEventsSpecification(), pageable).getContent();
@@ -132,7 +129,6 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    @Transactional
     public List<Event> getAllEvents(UserEventsParams userEventsParams, String ip) {
         Pageable pageable = PageRequest.of(
                 userEventsParams.getFrom() / userEventsParams.getSize(),
@@ -143,7 +139,6 @@ public class EventServiceImpl implements EventService {
         Map<Integer, Event> publishedEvents = events.stream()
                 .filter(event -> event.getState() == EventState.PUBLISHED)
                 .collect(Collectors.toMap(Event::getId, Function.identity()));
-
         if (!publishedEvents.isEmpty()) {
             Map<Integer, ViewStatsDto> stats = ewmStatsClient.getViewStats(
                     publishedEvents.values().stream().map(Event::getPublishedOn).sorted().findFirst().get(),
@@ -167,7 +162,6 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    @Transactional
     public Event getEventById(Integer eventId, String ip) {
         Event event = eventRepository.findById(eventId).orElseThrow(() -> new EventNotFoundException(eventId));
         if (event.getState() != EventState.PUBLISHED) {

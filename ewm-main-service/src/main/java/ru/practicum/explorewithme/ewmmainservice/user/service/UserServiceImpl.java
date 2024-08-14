@@ -20,7 +20,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public List<User> getAllUsersByIds(List<Integer> ids, Integer from, Integer size) {
         Pageable pageable = PageRequest.of(from / size, size);
         if (ids != null && !ids.isEmpty()) {

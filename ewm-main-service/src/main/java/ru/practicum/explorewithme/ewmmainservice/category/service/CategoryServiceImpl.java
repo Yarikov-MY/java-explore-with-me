@@ -23,13 +23,11 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    @Transactional
     public List<Category> getAllCategories(Integer from, Integer size) {
         return categoryRepository.findAll(PageRequest.of(from / size, size)).getContent();
     }
 
     @Override
-    @Transactional
     public Category getCategory(Integer categoryId) {
         return categoryRepository.findById(categoryId).orElseThrow(() -> new CategoryNotFoundException(categoryId));
     }

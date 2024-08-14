@@ -13,29 +13,27 @@ import java.util.stream.Collectors;
 
 public class CompilationMapper {
     public static CompilationDto toCompilationDto(@NonNull Compilation compilation) {
-        return new CompilationDto(
-                compilation.getId(),
-                compilation.getPinned() != null ? compilation.getPinned() : false,
-                compilation.getTitle(),
-                compilation.getEvents() != null ? compilation.getEvents().stream()
+        return CompilationDto.builder()
+                .id(compilation.getId())
+                .pinned(compilation.getPinned() != null ? compilation.getPinned() : false)
+                .title(compilation.getTitle())
+                .events(compilation.getEvents() != null ? compilation.getEvents().stream()
                         .map(EventMapper::toEventShortDto)
-                        .collect(Collectors.toList()) : Collections.emptyList()
-        );
+                        .collect(Collectors.toList()) : Collections.emptyList())
+                .build();
     }
 
     public static Compilation toCompilation(NewCompilationDto editableCompilationDTO) {
-        Compilation compilation = new Compilation(
-                null,
-                editableCompilationDTO.getTitle(),
-                editableCompilationDTO.getPinned() != null ? editableCompilationDTO.getPinned() : false,
-                null
-        );
+        Compilation.CompilationBuilder compilationBuilder = Compilation.builder()
+                .title(editableCompilationDTO.getTitle())
+                .pinned(editableCompilationDTO.getPinned() != null ? editableCompilationDTO.getPinned() : false);
+
         if (editableCompilationDTO.getEvents() != null && !editableCompilationDTO.getEvents().isEmpty()) {
-            compilation.setEvents(editableCompilationDTO.getEvents()
+            compilationBuilder.events(editableCompilationDTO.getEvents()
                     .stream().map(eventId -> Event.builder().id(eventId).build())
                     .collect(Collectors.toSet()));
         }
-        return compilation;
+        return compilationBuilder.build();
     }
 
 }

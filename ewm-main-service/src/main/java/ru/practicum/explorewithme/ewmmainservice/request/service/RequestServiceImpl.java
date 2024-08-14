@@ -35,13 +35,11 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    @Transactional
     public List<Request> getAllUserRequests(Integer userId) {
         return requestRepository.findAllByRequesterId(userId);
     }
 
     @Override
-    @Transactional
     public List<Request> getEventParticipants(Integer userId, Integer eventId) {
         Optional<Event> event = eventRepository.findEventByIdAndInitiatorId(eventId, userId);
         if (event.isPresent()) {

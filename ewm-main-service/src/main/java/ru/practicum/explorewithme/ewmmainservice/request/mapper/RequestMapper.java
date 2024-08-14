@@ -8,6 +8,12 @@ import ru.practicum.explorewithme.ewmmainservice.request.model.Request;
 @UtilityClass
 public class RequestMapper {
     public static RequestDto toRequestDto(@NotNull Request request) {
-        return new RequestDto(request.getId(), request.getCreated(), request.getEvent().getId(), request.getRequester().getId(), request.getStatus());
+        return RequestDto.builder()
+                .id(request.getId())
+                .created(request.getCreated())
+                .event(request.getEvent().getId())
+                .requester(request.getRequester().getId())
+                .status(request.getStatus())
+                .build();
     }
 }
