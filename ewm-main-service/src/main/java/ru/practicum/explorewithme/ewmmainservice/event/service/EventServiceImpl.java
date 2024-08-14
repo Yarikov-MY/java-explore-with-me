@@ -129,6 +129,7 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    @Transactional
     public List<Event> getAllEvents(UserEventsParams userEventsParams, String ip) {
         Pageable pageable = PageRequest.of(
                 userEventsParams.getFrom() / userEventsParams.getSize(),
@@ -162,6 +163,7 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    @Transactional
     public Event getEventById(Integer eventId, String ip) {
         Event event = eventRepository.findById(eventId).orElseThrow(() -> new EventNotFoundException(eventId));
         if (event.getState() != EventState.PUBLISHED) {
