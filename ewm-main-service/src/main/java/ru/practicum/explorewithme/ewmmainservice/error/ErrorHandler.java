@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ru.practicum.explorewithme.ewmmainservice.category.exception.CategoryConflictException;
 import ru.practicum.explorewithme.ewmmainservice.category.exception.CategoryNotFoundException;
+import ru.practicum.explorewithme.ewmmainservice.comment.exception.CommentConflictException;
+import ru.practicum.explorewithme.ewmmainservice.comment.exception.CommentNotFoundException;
 import ru.practicum.explorewithme.ewmmainservice.compilation.exception.CompilationNotFoundException;
 import ru.practicum.explorewithme.ewmmainservice.event.exception.EventNotFoundException;
 import ru.practicum.explorewithme.ewmmainservice.event.exception.InvalidEventStateException;
@@ -61,7 +63,8 @@ public class ErrorHandler {
             CompilationNotFoundException.class,
             EventNotFoundException.class,
             RequestNotFoundException.class,
-            UserNotFoundException.class
+            UserNotFoundException.class,
+            CommentNotFoundException.class
     })
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse handleNotFoundException(RuntimeException e) {
@@ -77,7 +80,8 @@ public class ErrorHandler {
             CategoryConflictException.class,
             InvalidEventStateException.class,
             InvalidRequestStateException.class,
-            UserAlreadyExistsException.class
+            UserAlreadyExistsException.class,
+            CommentConflictException.class
     })
     @ResponseStatus(HttpStatus.CONFLICT)
     public ErrorResponse handleConflictException(RuntimeException e) {
