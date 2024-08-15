@@ -536,7 +536,7 @@
       "response": []
     },
     {
-      "name": "Администратор удаляет комментарий, который не создан",
+      "name": "Admin delete unknown comment",
       "event": [
         {
           "listen": "prerequest",
@@ -585,14 +585,16 @@
       "response": []
     },
     {
-      "name": "Успешное добавление комментария",
+      "name": "Succes add comment",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test(\"Response status must be 201\", function () {\r",
-              "    pm.response.to.have.status(201);   \r",
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+              "    pm.response.to.have.status(200);    \r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
               "});\r",
               "\r",
               "pm.test(\"Response must contains body in json format\", function () {   \r",
@@ -707,7 +709,7 @@
       "response": []
     },
     {
-      "name": "Успешное обновление комментария автором",
+      "name": "Success update comment by author",
       "event": [
         {
           "listen": "test",
