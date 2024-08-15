@@ -46,6 +46,7 @@ public class PublicEventController {
     ) {
         return commentService.getEventComments(eventId, from, size).stream().map(CommentMapper::toCommentDto).collect(Collectors.toList());
     }
+
     @GetMapping
     public List<EventFullDto> getAllEvents(
             @RequestParam(required = false) String text,
