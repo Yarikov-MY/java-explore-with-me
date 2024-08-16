@@ -13,14 +13,17 @@ public class CommentMapper {
     }
 
     public static CommentDto toCommentDto(@NonNull Comment comment) {
-        return CommentDto.builder()
+        CommentDto.CommentDtoBuilder builder = CommentDto.builder()
                 .id(comment.getId())
-                .eventId(comment.getEvent().getId())
-                .authorId(comment.getAuthor().getId())
-                .authorName(comment.getAuthor().getName())
                 .commentText(comment.getCommentText())
                 .created(comment.getCreated())
-                .edited(comment.getEdited())
-                .build();
+                .edited(comment.getEdited());
+        if (comment.getEvent() != null) {
+            builder.eventId(comment.getEvent().getId());
+        }
+        if (comment.getAuthor() != null) {
+            builder.authorId(comment.getAuthor().getId()).authorName(comment.getAuthor().getName());
+        }
+        return builder.build();
     }
 }

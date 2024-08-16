@@ -34,7 +34,6 @@ public class CommentServiceImpl implements CommentService {
     private final RequestRepository requestRepository;
     private final UserRepository userRepository;
 
-
     @Value("${time-to-edit-seconds}")
     private int timeToEditSeconds;
 
