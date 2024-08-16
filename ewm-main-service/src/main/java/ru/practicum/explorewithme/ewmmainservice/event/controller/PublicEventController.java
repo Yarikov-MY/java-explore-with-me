@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import ru.practicum.explorewithme.ewmmainservice.comment.dto.CommentDto;
+import ru.practicum.explorewithme.ewmmainservice.comment.mapper.CommentMapper;
+import ru.practicum.explorewithme.ewmmainservice.comment.service.CommentService;
 import ru.practicum.explorewithme.ewmmainservice.event.dto.EventFullDto;
 import ru.practicum.explorewithme.ewmmainservice.event.mapper.EventMapper;
 import ru.practicum.explorewithme.ewmmainservice.event.model.Event;
@@ -28,9 +31,20 @@ import java.util.stream.Collectors;
 public class PublicEventController {
 
     private final EventService eventService;
+    private final CommentService commentService;
 
-    public PublicEventController(EventService eventService) {
+    public PublicEventController(EventService eventService, CommentService commentService) {
         this.eventService = eventService;
+        this.commentService = commentService;
+    }
+
+    @GetMapping("/{eventId}/comments")
+    public List<CommentDto> getEventComments(
+            @PathVariable Integer eventId,
+            @RequestParam(defaultValue = "0") Integer from,
+            @RequestParam(defaultValue = "10") Integer size
+    ) {
+        return commentService.getEventComments(eventId, from, size).stream().map(CommentMapper::toCommentDto).collect(Collectors.toList());
     }
 
     @GetMapping
